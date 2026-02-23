@@ -3,55 +3,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sporty balance adder</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="index.css">
+<title>Secure Balance Adder</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+  background:#050505;
+  color:#eaeaea;
+}
+
+/* ===== SCAM LANDING PAGE ===== */
+header{
+  text-align:center;
+  padding:60px 20px;
+}
+
+header h1{
+  color:#00ffcc;
+  font-size:2.5rem;
+}
+
+header p{
+  color:#aaa;
+  margin-top:15px;
+}
+
+.fake-balance{
+  background:#0f1f1a;
+  max-width:600px;
+  margin:40px auto;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.fake-balance h2{
+  color:#00ffcc;
+}
+
+.amount{
+  font-size:2.3rem;
+  margin-top:10px;
+}
+
+.section{
+  max-width:900px;
+  margin:50px auto;
+  padding:0 20px;
+}
+
+.card{
+  background:#111;
+  padding:25px;
+  border-radius:12px;
+  margin-bottom:25px;
+  border-left:4px solid #00ffcc;
+}
+
+.card h3{
+  color:#00ffcc;
+  margin-bottom:10px;
+}
+
+.test-btn{
+  display:block;
+  width:220px;
+  margin:40px auto;
+  padding:15px;
+  background:#00ffcc;
+  color:#000;
+  text-align:center;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#555;
+  font-size:.85rem;
+}
+
+/* ===== OVERLAY ===== */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:#0b141a;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+/* ===== WHATSAPP UI ===== */
+.whatsapp{
+  width:100%;
+  max-width:380px;
+  height:600px;
+  background:#efeae2;
+  border-radius:15px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.wa-header{
+  background:#075e54;
+  color:#fff;
+  padding:15px;
+  font-weight:bold;
+}
+
+.chat{
+  flex:1;
+  padding:15px;
+  overflow-y:auto;
+}
+
+/* ===== MESSAGES ===== */
+.msg{
+  max-width:75%;
+  padding:10px 14px;
+  border-radius:10px;
+  margin-bottom:10px;
+  font-size:.9rem;
+  opacity:0;
+  animation:fadeIn .4s forwards;
+}
+
+.in{
+  background:#fff;
+  color:#000;
+}
+
+.out{
+  background:#dcf8c6;
+  margin-left:auto;
+  color:#000;
+}
+
+.warning{
+  background:#ffdddd;
+  color:#a80000;
+  font-weight:bold;
+}
+
+/* ===== TYPING DOTS ===== */
+.typing{
+  width:60px;
+  padding:10px;
+  background:#fff;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  color:#000;
+}
+
+.typing span{
+  width:8px;
+  height:8px;
+  background:#000;
+  border-radius:50%;
+  animation:blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+
+@keyframes blink{
+  0%{opacity:.2;}
+  20%{opacity:1;}
+  100%{opacity:.2;}
+}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+/* ===== FAKE RECEIPT ===== */
+.receipt{
+  background:#fff;
+  color:#000;
+  border-radius:10px;
+  padding:12px;
+  max-width:80%;
+  font-size:.85rem;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+
+.receipt h4{
+  font-size:.9rem;
+  margin-bottom:6px;
+  color:#075e54;
+}
+
+.receipt .row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:4px;
+}
+
+.receipt .success{
+  color:green;
+  font-weight:bold;
+  margin-top:6px;
+}
+
+/* ===== FINAL WARNING ===== */
+.final{
+  padding:15px;
+  text-align:center;
+  background:#fff;
+  border-top:1px solid #ddd;
+}
+
+.final h3{
+  color:#c00000;
+  margin-bottom:8px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">Sport edge</div>
-    <!---<nav>
-        <a href="login.html">Home</a>
-        <a href="login.html">Predictions</a>
-        <a href="login.html">VIP</a>
-        <a href="login.html">Contact</a>
-    </nav>--->
+  <h1>Secure Balance Adder</h1>
+  <p>Private • Instant • Undetectable</p>
 </header>
 
-<section class="hero">
-    <h1>Winning Starts Here</h1>
-    <p>Get accurate football predictions and expert betting insights daily.</p>
-    <a href="login.html" class="btn">Get Started</a>
-</section>
+<div class="fake-balance">
+  <h2>Wallet Balance</h2>
+  <div class="amount"><ion-icon name="logo-usd"></ion-icon>8,000,000.00</div>
+  <p style="color:#7fffd4;margin-top:8px;">Connected</p>
+</div>
 
-<section class="matches">
-    <div class="match-card" onclick="redirect()">
-        <h3>Arsenal vs Chelsea</h3>
-        <p>Prediction: Over 2.5 Goals</p>
+<div class="section">
+  <div class="card">
+    <h3>How It Works</h3>
+    <p>Funds are injected via internal financial system nodes.</p>
+  </div>
+
+  <div class="card">
+    <h3>Why People Trust This</h3>
+    <p>No delay. No trace. Private method.</p>
+  </div>
+</div>
+
+<div class="test-btn" onclick="openChat()">View Testimonials</div>
+
+<footer>© 2026 Secure System</footer>
+
+<!-- ===== CHAT OVERLAY ===== -->
+<div id="overlay">
+  <div class="whatsapp">
+    <div class="wa-header">Balance Adder Agent</div>
+    <div class="chat" id="chat"></div>
+    <div class="final" id="final" style="display:none;">
+      <h3>BE WISE.</h3>
+      <p>
+        This is exactly how scams work.<br>
+        No system can magically add money.<br>
+        If it sounds easy and secret — it’s a scam.
+      </p>
     </div>
-
-    <div class="match-card" onclick="redirect()">
-        <h3>Real Madrid vs Barcelona</h3>
-        <p>Prediction: Both Teams To Score</p>
-    </div>
-
-    <div class="match-card" onclick="redirect()">
-        <h3>PSG vs Lyon</h3>
-        <p>Prediction: PSG Win</p>
-    </div>
-</section>
-
-<div class="footer">
-    © 2026 SportEdge. All Rights Reserved.
+  </div>
 </div>
 
 <script>
-function redirect(){
-    window.location.href = "login.html";
+const overlay=document.getElementById("overlay");
+const chat=document.getElementById("chat");
+const final=document.getElementById("final");
+
+function openChat(){
+  overlay.style.display="flex";
+  runChat();
+}
+
+const convo=[
+  {t:"Hello boss, ready to add balance?", type:"in"},
+  {t:"Yes, I want to try it.", type:"out"},
+  {t:"Very fast. Just small activation fee.", type:"in"},
+  {t:"Is it legit?", type:"out"},
+  {t:"100% legit. Withdraw immediately.", type:"in"},
+  {type:"receipt"},
+  {t:"⚠ THIS IS A SCAM ⚠", type:"warning"},
+  {t:"That receipt is fake.", type:"warning"},
+  {t:"People lose money at this stage.", type:"warning"}
+];
+
+let i=0;
+
+function runChat(){
+  addTyping();
+}
+
+function addTyping(){
+  const typing=document.createElement("div");
+  typing.className="typing msg in";
+  typing.innerHTML="<span></span><span></span><span></span>";
+  chat.appendChild(typing);
+  chat.scrollTop=chat.scrollHeight;
+
+  setTimeout(()=>{
+    typing.remove();
+    addMsg();
+  },1500);
+}
+
+function addMsg(){
+  if(i>=convo.length){
+    final.style.display="block";
+    return;
+  }
+
+  const data=convo[i];
+
+  if(data.type==="receipt"){
+    const r=document.createElement("div");
+    r.className="msg in receipt";
+    r.innerHTML=`
+      <h4>Transaction Successful</h4>
+      <div class="row"><span>Amount</span><span>$5,000.00</span></div>
+      <div class="row"><span>Reference</span><span>#TX92A1F</span></div>
+      <div class="row"><span>Date</span><span>Today</span></div>
+      <div class="success">✔ Completed</div>
+    `;
+    chat.appendChild(r);
+    chat.scrollTop=chat.scrollHeight;
+    i++;
+    setTimeout(addTyping,1200);
+    return;
+  }
+
+  const m=document.createElement("div");
+  m.className="msg "+(data.type==="in"?"in":data.type==="out"?"out":"warning");
+  m.textContent=data.t;
+  chat.appendChild(m);
+  chat.scrollTop=chat.scrollHeight;
+  i++;
+  setTimeout(addTyping,1200);
 }
 </script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>

